@@ -1,0 +1,88 @@
+{
+  "members": [
+    {
+      "name": "fernando",
+      "projects": [
+        {
+          "id": 1,
+          "title": "React Router Page",
+          "description": "Pagina con React Router",
+          "image": "/images/router.png",
+          "type": "frontend",
+          "technologies": ["React", "React Router"]
+        },
+        {
+          "id": 2,
+          "title": "UseState & UseEffect",
+          "description": "Utilizacion de UseState & UseEffect para el importado de estos datos y su respectivo filtraje",
+          "image": "/images/state.png",
+          "type": "frontend",
+          "technologies": ["UseState", "UseEffect"]
+        }
+      ]
+    },
+    {
+      "name": "nico",
+      "projects": [
+        {
+          "id": 3,
+          "title": "Creacion Migrations",
+          "description": "Creacion de Migrations Laravel y confeccion de la BDD",
+          "image": "/images/migrations.png",
+          "type": "backend",
+          "technologies": ["Laravel", "Oracle"]
+        },
+        {
+          "id": 4,
+          "title": "Creacion FakeData",
+          "description": "Insercion de FakeData en la BDD atreaves de Seeders y Factories",
+          "image": "/images/seeders.png",
+          "type": "backend",
+          "technologies": ["PHP", "SQL"]
+        }
+      ]
+    },
+    {
+      "name": "alex",
+      "projects": [
+        {
+          "id": 5,
+          "title": "Pagina React + Bootstrap",
+          "description": "Confeccion de web con Bootstrap para React",
+          "image": "/images/bootstrap.png",
+          "type": "uiux",
+          "technologies": ["HTML", "CSS","Bootstrap"]
+        },
+        {
+          "id": 6,
+          "title": "React Icons Bootstrap",
+          "description": "Confeccion de web con Bootstrap Icons ",
+          "image": "/images/react-icons.png",
+          "type": "uiux",
+          "technologies": ["React Icons", "React Icons"]
+        }
+      ]
+    },
+    {
+      "name": "sergi",
+      "projects": [
+        {
+          "id": 7,
+          "title": "Dockerizacion Mysql + Nginx + PHP",
+          "description": "Dockerizacion de stack Alpine + Mysql + Nginx + PHP.",
+          "image": "/images/dockerfile-lnmp.png",
+          "type": "devops",
+          "technologies": ["Docker"]
+        },
+        {
+          "id": 8,
+          "title": "Dockerizacion Node.js",
+          "description": "Dockerizacion de stack Alpine + Node.js.",
+          "image": "/images/dockerfile-node.png",
+          "type": "devops",
+          "technologies": ["Docker"]
+        }
+      ]
+    }
+  ]
+}
