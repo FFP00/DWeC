@@ -1,35 +1,86 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef, useState } from 'react'
+import { useEffect } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+import Top from './components/Top'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Products from './components/Products'
+import Footer from './components/Footer'
+import Formulario from './components/Formulario'
+import { nanoid } from 'nanoid';
+
+export default function App() {
+
+  const [productos,setProductos] = useState([]);
+  const [productosFiltrados,setProductosFiltrados] = useState(null);
+  const inputRef = useRef(null)
+  const productRef = useRef(null)
+  const codeRef = useRef(null)
+
+  function handleChange(){
+    setProductosFiltrados(productos.filter( objeto =>
+        (objeto.name.toLowerCase().includes(inputRef.current.value.toLowerCase()))
+      )
+    )
+  }
+
+  function handleDelete(id){
+    setProductos(
+      [...productos].filter( products => !(products.id == id) )
+    )
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    setProductos(prev => [...prev,
+      {
+        id : nanoid(),
+        name : productRef.current.value,
+        offer : codeRef.current.value
+      }])
+  }
+
+    async function fetchProducts(){
+    const data = await fetch("/data/products.json");
+    const json = await data.json()
+    setProductos(json)
+  }
+
+  useEffect(() => {
+    const productosLocal = localStorage.getItem("productosLocal");
+    if(productosLocal){
+      const parsed = JSON.parse(productosLocal);
+      (Array.isArray(parsed) && parsed.length > 0) ? setProductos(parsed) : fetchProducts();
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("productosLocal",JSON.stringify(productos));
+  },[productos]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id="page">
+        <Top />
+        <Header 
+          handleChange={handleChange}
+          inputRef={inputRef}
+        />
+        <Hero />
+        <section className="product-grid">
+          <Products 
+            productos={productosFiltrados ? productosFiltrados : productos }
+            handleDelete={handleDelete}
+          />
+        </section>
+
+        <Formulario 
+          productRef={productRef}
+          codeRef={codeRef}
+          handleSubmit={handleSubmit}
+        />
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
-
-export default App
