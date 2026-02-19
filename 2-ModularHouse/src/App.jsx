@@ -47,6 +47,8 @@ export default function App() {
 
     } catch (error) {
       console.error(error);
+    }finally{
+      
     }
   };
 
