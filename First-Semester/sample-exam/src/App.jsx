@@ -41,9 +41,9 @@ export default function App() {
   }
 
     async function fetchProducts(){
-    const data = await fetch("/data/products.json");
-    const json = await data.json()
-    setProductos(json)
+      const data = await fetch("/data/products.json");
+      const json = await data.json()
+      setProductos(json)
   }
 
   useEffect(() => {
