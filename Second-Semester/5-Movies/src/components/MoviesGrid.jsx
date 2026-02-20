@@ -16,14 +16,14 @@ export default function MoviesGrid(){
     const [next,setNext] = useState(4)
 
     function handleLoad() {
-    const newNext = next + 4;
+        const newNext = next + 4;
 
-    setFilteredMovies(movies.slice(0, newNext));
-    setNext(newNext);
+        setFilteredMovies(movies.slice(0, newNext));
+        setNext(newNext);
 
-    if (newNext >= movies.length) {
-        setHasMore(false);
-    }
+        if (newNext >= movies.length) {
+            setHasMore(false);
+        }
     }
 
 
