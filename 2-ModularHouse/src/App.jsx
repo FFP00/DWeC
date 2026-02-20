@@ -34,7 +34,7 @@ export default function App() {
   }
 
   function handleLoad(){
-    setLoad(load+3)
+    setLoad(prev => prev + 3)
   }
 
   async function getData(){
